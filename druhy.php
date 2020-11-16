@@ -13,21 +13,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
 </head>
 <!-- koniec hlavicka -->
-
 <!-- zaciatok body -->
 <body>
-
 <!-- zaciatok header navbar -->
 <header id="top">
-
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="navbarHeader">
         <a class="navbar-brand text-info font-weight-bold" href="index.php">S_Info</a>
-
         <!-- button pri zmensenej obrazovke -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <!-- menu -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- linky v navbar -->
@@ -55,7 +50,6 @@
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li> -->
             </ul>
-
             <!-- search -->
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -63,13 +57,10 @@
             </form>
         </div>
     </nav>
-
 </header>
 <!-- koniec header navbar -->
-
 <!-- zaciatok telo -->
 <main>
-
     <!-- zaciatok hore Nadpis, popisok, obrzok, odrazky -->
     <div class="container">
         <div class="row text-center align-items-center bg-dark ">
@@ -79,7 +70,6 @@
                 <p>Manifest is an American supernatural drama television series, created by Jeff Rake, that premiered on September 24, 2018, on NBC. The series centers on the passengers and crew of a commercial airliner who suddenly reappear after being presumed dead for more than five years. It stars Melissa Roxburgh, Josh Dallas, Athena Karkanis, J. R. Ramirez, Luna Blaise, Jack Messina, Parveen Kaur, and Matt Long. In October 2018, NBC ordered an additional three episodes of the series, bringing the first season total up to 16 episodes.
                     In April 2019, NBC renewed the series for a second season, which premiered on January 6, 2020. In June 2020, the series was renewed for a third season which is set to premiere in 2021.</p>
             </div>
-
             <!-- obrazok, odrazky -->
             <div class="col-lg-4">
                 <hr class="my-1 horizontalLine m-2">
@@ -89,7 +79,6 @@
                         <img src="https://images.justwatch.com/backdrop/161547827/s1440/manifest"  alt="img" class="rounded mx-auto d-block img-fluid">
                     </div>
                 </div>
-
                 <hr class="my-1 horizontalLine m-2">
                 <!-- odrazky -->
                 <div class="row text-left text-white">
@@ -107,18 +96,14 @@
         </div>
     </div>
     <!-- koniec hore Nadpis, popisok, obrzok, odrazky -->
-
     <!-- zaciatok popis serii -->
     <div class="container" id="seria">
-
         <!-- box light -->
         <div class="row text-center align-items-center bg-light p-5 text-black">
-
             <!-- l obrazok -->
             <div class="col-md-6">
                 <img src="https://stingeruniverse.com/wp-content/uploads/2019/03/manifest.jpg"  alt="img" class="rounded mx-auto d-block img-fluid">
             </div>
-
             <!-- l text -->
             <div class="col-md-6">
                 <h2>Prva seria</h2>
@@ -128,7 +113,6 @@
                         Pozri trailer
                     </button></p>
             </div>
-
             <!-- l video collapse -->
             <div class="col-md-12">
                 <div class="collapse" id="MANIFESTseria1">
@@ -138,10 +122,8 @@
                 </div>
             </div>
         </div>
-
         <!-- box secondary -->
         <div class="row text-center align-items-center bg-secondary p-5 text-white">
-
             <!-- s text -->
             <div class="col-md-6">
                 <h2>Druha seria</h2>
@@ -151,12 +133,10 @@
                         Pozri trailer
                     </button></p>
             </div>
-
             <!-- s obrazok -->
             <div class="col-md-6">
                 <img src="https://images.justwatch.com/backdrop/161547827/s1440/manifest" alt="img" class="rounded mx-auto d-block img-fluid">
             </div>
-
             <!-- s video collapse -->
             <div class="col-md-12">
                 <div class="collapse" id="MANIFESTseria2">
@@ -166,19 +146,15 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- koniec popis serii -->
-
     <!-- zaciatok postavy -->
     <div class="container" id="postavy">
         <div class="row">
-
             <!-- nadpis pre tabulku postav -->
             <div class="col-lg-12 text-center p-5">
                 <h2 class="font-weight-bold text-white">Hlavné herecké obsadenie</h2>
             </div>
-
             <!-- tabulka postav -->
             <div class="col-lg-12 p-0">
                 <table class="table">
@@ -245,14 +221,11 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
     </div>
     <!-- koniec postavy -->
-
 </main>
 <!-- koniec telo -->
-
 <!-- hore -->
 <div class="container">
     <div class="row text-center float-right p-2">
@@ -261,16 +234,12 @@
         </div>
     </div>
 </div>
-
-
 <!-- zaciatok footer -->
 <footer>
     <p>Author: Matúš Plecho
         <br><a href="mailto:plecho@stud.uniza.sk">plecho@stud.uniza.sk</a></p>
 </footer>
 <!-- koniec footer -->
-
 </body>
 <!-- koniec body -->
-
 </html>
