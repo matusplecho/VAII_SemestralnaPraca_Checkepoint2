@@ -1,3 +1,9 @@
+<?php
+require "DBStorage.php";
+$storage = new DBStorage();
+
+$seasons = $storage->getAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -146,6 +152,87 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+        <!-- php secondary box-->
+        <?php foreach ($seasons as $season)  {
+
+            $odkaz = $season->getNazov() . $season->getCislo();
+            $odkaz1 = "#" . $odkaz;
+
+
+            if($season->getCislo()%2 == 1){
+                ?>
+
+                <!-- box php light -->
+                <div class="row text-center align-items-center bg-light p-5 text-black">
+                    <!-- l obrazok -->
+                    <div class="col-md-6">
+                        <img src="<?=$season->getImgLink()?>"  alt="img" class="rounded mx-auto d-block img-fluid">
+                    </div>
+                    <!-- l text -->
+                    <div class="col-md-6">
+                        <h2>Seria <?=$season->getCislo()?></h2>
+                        <p><?=$season->getPopis()?></p>
+                        <!-- l button modry -->
+                        <p><button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="<?php echo $odkaz1 ?>" aria-expanded="false" aria-controls="<?php echo $odkaz ?>">
+                                Pozri trailer
+                            </button></p>
+                    </div>
+                    <!-- l video collapse -->
+                    <div class="col-md-12">
+                        <div class="collapse" id="<?php echo $odkaz ?>">
+                            <div class="embed-responsive embed-responsive-16by9 mt-2">
+                                <iframe class="embed-responsive-item" src="<?=$season->getVideoLink()?>" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <?php
+                    } else {
+                ?>
+
+            <div class="row text-center align-items-center bg-secondary p-5 text-white">
+            <!-- s text -->
+            <div class="col-md-6">
+                <h2>Seria <?=$season->getCislo()?></h2>
+                <p><?=$season->getPopis()?></p>
+                <!-- s button biely -->
+                <p><button class="btn btn-outline-light" type="button" data-toggle="collapse" data-target="<?php echo $odkaz1 ?>" aria-expanded="false" aria-controls="<?php echo $odkaz ?>">
+                        Pozri trailer
+                    </button></p>
+            </div>
+            <!-- s obrazok -->
+            <div class="col-md-6">
+                <img src="<?=$season->getImgLink()?>" alt="img" class="rounded mx-auto d-block img-fluid">
+            </div>
+            <!-- s video collapse -->
+            <div class="col-md-12">
+                <div class="collapse" id="<?php echo $odkaz ?>">
+                    <div class="embed-responsive embed-responsive-16by9 mt-2">
+                        <iframe class="embed-responsive-item" src="<?=$season->getVideoLink()?>" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <?php }
+            } ?>
+
+
+
+
+
+
     </div>
     <!-- koniec popis serii -->
     <!-- zaciatok postavy -->
