@@ -6,19 +6,17 @@ $seasons = $storage->getIdAll();
 
 $idDelete = -1;
 if (isset($_POST['submit'])){
-/*
-    foreach ($seasons as $season)  {
 
-        if((strcasecmp ((String)$season->getNazov(), (String)$_POST['nazov'])==0) && ($season->getCislo() == $_POST['cislo'])){
+    foreach ($seasons as $season)  {
+        if((strcasecmp ($season->getNazov(), $_POST['nazov'])==0) && ($season->getCislo() == $_POST['cislo'])){
             $idDelete = $season->getId();
         }
     }
 
     if($idDelete != (-1)) {
         $storage->deleteSeason($idDelete);
+
     }
-    */
-    $storage->deleteSeason($_POST['cislo']);
 }
 
 
@@ -114,6 +112,49 @@ if (isset($_POST['submit'])){
                         </div>
                     </div>
 
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="container">
+        <div class="row text-center ">
+            <div class="col-sm-12 text-white p-2 font-weight-bold text-center">
+                <h1>Uprav popis serie</h1>
+            </div>
+            <div class="col-md-12 mb-4 text-left bg-secondary align-items-center p-3">
+
+                <form method="post">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 text-light font-weight-bold col-form-label">Nazov</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="nazov" class="form-control" id="formGroupExampleInput" placeholder="Nazov serialu">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Cislo</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="cislo" class="form-control" id="formGroupExampleInput" placeholder="Cislo série">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="exampleFormControlTextarea1" class="col-sm-2 text-light font-weight-bold col-form-label">Popis</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" name="popis" id="exampleFormControlTextarea1" rows="5" placeholder="Popis série"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-sm-12 text-center">
+                            <input type="submit" name="uprav" value="Uprav" class="btn font-weight-bold btn-light">
+                        </div>
+                    </div>
+
 
                 </form>
             </div>
@@ -121,6 +162,7 @@ if (isset($_POST['submit'])){
     </div>
 </main>
 <!-- koniec telo -->
+
 <!-- hore -->
 <div class="container">
     <div class="row text-center float-right p-2">
@@ -135,7 +177,9 @@ if (isset($_POST['submit'])){
         <br><a href="mailto:plecho@stud.uniza.sk">plecho@stud.uniza.sk</a></p>
 </footer>
 <!-- koniec footer -->
+
 </body>
 <!-- koniec body -->
 </html>
+
 

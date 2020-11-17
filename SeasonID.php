@@ -3,7 +3,7 @@
 
 class SeasonID
 {
-    private $id;
+    public $id;
     public $cislo;
     public $popis;
     public $video_link;
@@ -19,7 +19,7 @@ class SeasonID
      * @param $img_link
      * @param $nazov
      */
-    public function __construct($id, $cislo, $popis, $video_link, $img_link, $nazov)
+    public function __construct($id, $nazov, $cislo, $video_link, $img_link, $popis)
     {
         $this->id = $id;
         $this->cislo = $cislo;

@@ -119,13 +119,6 @@ $seasons = $storage->getAll();
 
 
                     <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">index</label>
-                        <div class="col-sm-10">
-                            <input type="number" name="vymaz" class="form-control" id="formGroupExampleInput" placeholder="index">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
                         <div class="col-sm-12 text-center">
                             <input type="submit" name="submit" value="Pridaj" class="btn font-weight-bold btn-light">
                         </div>
