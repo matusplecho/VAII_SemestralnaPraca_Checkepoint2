@@ -1,3 +1,16 @@
+<?php
+require "DBStorage.php";
+$storage = new DBStorage();
+
+/*if (isset($_POST['nazov'], $_POST['cislo'], $_POST['video_link'], $_POST['img_link'], $_POST['popis'])){*/
+if (isset($_POST['submit'])){
+    $season = new Season($_POST['nazov'], $_POST['cislo'], $_POST['video_link'], $_POST['img_link'], $_POST['popis']);
+    $storage->saveSeason($season);
+}
+
+$seasons = $storage->getAll();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,45 +81,45 @@
             </div>
             <div class="col-md-12 mb-4 text-left bg-secondary align-items-center p-3">
 
-                <form>
+                <form method="post">
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 text-light font-weight-bold col-form-label">Nazov</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nazov serialu">
+                            <input type="text" name="nazov" class="form-control" id="formGroupExampleInput" placeholder="Nazov serialu">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Cislo</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Cislo série">
+                            <input type="number" name="cislo" class="form-control" id="formGroupExampleInput" placeholder="Cislo série">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Video</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Link na video">
+                            <input type="text" name="video_link" class="form-control" id="formGroupExampleInput" placeholder="Link na video">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Obrazok</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Link na obrazok">
+                            <input type="text" name="img_link" class="form-control" id="formGroupExampleInput" placeholder="Link na obrazok">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="exampleFormControlTextarea1" class="col-sm-2 text-light font-weight-bold col-form-label">Popis</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Popis série"></textarea>
+                            <textarea class="form-control" name="popis" id="exampleFormControlTextarea1" rows="5" placeholder="Popis série"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-sm-12 text-center">
-                            <button type="submit" class="btn font-weight-bold btn-light">Pridaj</button>
+                            <input type="submit" name="submit" value="Pridaj" class="btn font-weight-bold btn-light">
                         </div>
                     </div>
 

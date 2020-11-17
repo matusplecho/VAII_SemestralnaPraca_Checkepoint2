@@ -19,9 +19,9 @@ class Season
      * @param $img_link
      * @param $nazov
      */
-    public function __construct($id, $cislo, $popis, $video_link, $img_link, $nazov)
+    public function __construct($nazov, $cislo, $video_link, $img_link, $popis)
     {
-        $this->id = $id;
+       // $this->id = $id;
         $this->cislo = $cislo;
         $this->popis = $popis;
         $this->video_link = $video_link;
@@ -32,18 +32,18 @@ class Season
     /**
      * @return mixed
      */
-    public function getId()
+  /*  public function getId()
     {
         return $this->id;
-    }
+    }*/
 
     /**
      * @param mixed $id
      */
-    public function setId($id): void
+  /*  public function setId($id): void
     {
         $this->id = $id;
-    }
+    }*/
 
     /**
      * @return mixed
@@ -84,6 +84,16 @@ class Season
     {
         return $this->video_link;
     }
+
+    /**
+     * @return mixed
+     */
+   /* public function getVideoLinkCut($video_link):void
+    {
+        $video_link_cut_begin = substr($video_link, 0, 39);
+        $video_link_cut = substr($video_link_cut_begin, 0, strpos($inthat, $this);
+        echo $video_link_cut;
+    }/*
 
     /**
      * @param mixed $video_link
