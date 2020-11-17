@@ -20,6 +20,21 @@ if (isset($_POST['submit'])){
 }
 
 
+$idUprav = -1;
+if (isset($_POST['uprav'])){
+
+    foreach ($seasons as $season)  {
+        if((strcasecmp ($season->getNazov(), $_POST['meno'])==0) && ($season->getCislo() == $_POST['sezona'])){
+            $idUprav = $season->getId();
+        }
+    }
+
+    if($idUprav != (-1)) {
+        $storage->editSeasonPopis($idUprav, $_POST['text']);
+
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,21 +139,21 @@ if (isset($_POST['submit'])){
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-2 text-light font-weight-bold col-form-label">Nazov</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nazov" class="form-control" id="formGroupExampleInput" placeholder="Nazov serialu">
+                            <input type="text" name="meno" class="form-control" id="formGroupExampleInput" placeholder="Nazov serialu">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Cislo</label>
                         <div class="col-sm-10">
-                            <input type="number" name="cislo" class="form-control" id="formGroupExampleInput" placeholder="Cislo série">
+                            <input type="number" name="sezona" class="form-control" id="formGroupExampleInput" placeholder="Cislo série">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="exampleFormControlTextarea1" class="col-sm-2 text-light font-weight-bold col-form-label">Popis</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" name="popis" id="exampleFormControlTextarea1" rows="5" placeholder="Popis série"></textarea>
+                            <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="5" placeholder="Popis série"></textarea>
                         </div>
                     </div>
 

@@ -57,4 +57,10 @@ class DBStorage
         $stmt = $this->pdo->prepare("DELETE FROM sezona WHERE id = '$id' ");
         $stmt->execute();
     }
+
+    public function editSeasonPopis(int $id, $text): void
+    {
+        $stmt = $this->pdo->prepare("UPDATE sezona SET popis='$text' WHERE id='$id'");
+        $stmt->execute();
+    }
 }
