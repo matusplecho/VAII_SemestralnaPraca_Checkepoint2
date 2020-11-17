@@ -20,8 +20,10 @@ $seasonsID = $storage->getIdAll();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
 </head>
 <!-- koniec hlavicka -->
+
 <!-- zaciatok body -->
 <body>
+
 <!-- zaciatok header navbar -->
 <header id="top">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="navbarHeader">
@@ -59,6 +61,7 @@ $seasonsID = $storage->getIdAll();
     </nav>
 </header>
 <!-- koniec header navbar -->
+
 <!-- zaciatok telo -->
 <main>
     <!-- zaciatok hore Nadpis, popisok, obrzok, odrazky -->
@@ -96,68 +99,30 @@ $seasonsID = $storage->getIdAll();
         </div>
     </div>
     <!-- koniec hore Nadpis, popisok, obrzok, odrazky -->
+
     <!-- zaciatok popis serii -->
     <div class="container" id="seria">
         <!-- box light -->
-        <div class="row text-center align-items-center bg-light p-5 text-black">
-            <!-- l obrazok -->
-            <div class="col-md-6">
-                <img src="https://stingeruniverse.com/wp-content/uploads/2019/03/manifest.jpg"  alt="img" class="rounded mx-auto d-block img-fluid">
-            </div>
-            <!-- l text -->
-            <div class="col-md-6">
-                <h2>Prva seria</h2>
-                <p>Montego Air Flight 828 from Jamaica to New York City experiences a brief period of severe turbulence. When they land, the passengers and crew learn from NSA director Robert Vance that over five and a half years have passed while they were in the air, during which time they were presumed dead. As they reintegrate themselves into present-day society, the passengers begin to face the fact that their lives—and loved ones—are not the same as they were before, while they also begin to experience guiding voices and visions representing events yet to occur.</p>
-                <!-- l button modry -->
-                <p><button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#MANIFESTseria1" aria-expanded="false" aria-controls="MANIFESTseria1">
-                        Pozri trailer
-                    </button></p>
-            </div>
-            <!-- l video collapse -->
-            <div class="col-md-12">
-                <div class="collapse" id="MANIFESTseria1">
-                    <div class="embed-responsive embed-responsive-16by9 mt-2">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/I1hNAIzkQWY" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- box secondary -->
-        <div class="row text-center align-items-center bg-secondary p-5 text-white">
-            <!-- s text -->
-            <div class="col-md-6">
-                <h2>Druha seria</h2>
-                <p>Montego Air Flight 828 from Jamaica to New York City experiences a brief period of severe turbulence. When they land, the passengers and crew learn from NSA director Robert Vance that over five and a half years have passed while they were in the air, during which time they were presumed dead. As they reintegrate themselves into present-day society, the passengers begin to face the fact that their lives—and loved ones—are not the same as they were before, while they also begin to experience guiding voices and visions representing events yet to occur.</p>
-                <!-- s button biely -->
-                <p><button class="btn btn-outline-light" type="button" data-toggle="collapse" data-target="#MANIFESTseria2" aria-expanded="false" aria-controls="MANIFESTseria2">
-                        Pozri trailer
-                    </button></p>
-            </div>
-            <!-- s obrazok -->
-            <div class="col-md-6">
-                <img src="https://images.justwatch.com/backdrop/161547827/s1440/manifest" alt="img" class="rounded mx-auto d-block img-fluid">
-            </div>
-            <!-- s video collapse -->
-            <div class="col-md-12">
-                <div class="collapse" id="MANIFESTseria2">
-                    <div class="embed-responsive embed-responsive-16by9 mt-2">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/AdpNbnNEp-k" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
 
 
         <!-- php secondary box-->
-        <?php foreach ($seasons as $season)  {
+        <?php
+
+        $serial = "manifest";
+
+        $sezony = [];
+
+        foreach ($seasons as $season)  {
+            if( strcasecmp($season->getNazov(), $serial) == 0 ){
+                array_push($sezony, $season);
+            }
+        }
+
+        foreach ($sezony as $season)  {
 
             $odkaz = $season->getNazov() . $season->getCislo();
             $odkaz1 = "#" . $odkaz;
-
 
             if($season->getCislo()%2 == 1){
                 ?>
@@ -170,7 +135,7 @@ $seasonsID = $storage->getIdAll();
                     </div>
                     <!-- l text -->
                     <div class="col-md-6">
-                        <h2>Seria <?=$season->getCislo()?></h2>
+                        <h2>Séria <?=$season->getCislo()?></h2>
                         <p><?=$season->getPopis()?></p>
                         <!-- l button modry -->
                         <p><button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="<?php echo $odkaz1 ?>" aria-expanded="false" aria-controls="<?php echo $odkaz ?>">
@@ -187,40 +152,43 @@ $seasonsID = $storage->getIdAll();
                     </div>
                 </div>
 
-
-
-
                 <?php
                     } else {
                 ?>
 
-            <div class="row text-center align-items-center bg-secondary p-5 text-white">
-            <!-- s text -->
-            <div class="col-md-6">
-                <h2>Seria <?=$season->getCislo()?></h2>
-                <p><?=$season->getPopis()?></p>
-                <!-- s button biely -->
-                <p><button class="btn btn-outline-light" type="button" data-toggle="collapse" data-target="<?php echo $odkaz1 ?>" aria-expanded="false" aria-controls="<?php echo $odkaz ?>">
-                        Pozri trailer
-                    </button></p>
-            </div>
-            <!-- s obrazok -->
-            <div class="col-md-6">
-                <img src="<?=$season->getImgLink()?>" alt="img" class="rounded mx-auto d-block img-fluid">
-            </div>
-            <!-- s video collapse -->
-            <div class="col-md-12">
-                <div class="collapse" id="<?php echo $odkaz ?>">
-                    <div class="embed-responsive embed-responsive-16by9 mt-2">
-                        <iframe class="embed-responsive-item" src="<?=$season->getVideoLink()?>" allowfullscreen></iframe>
+                <!-- box php secondary -->
+                <div class="row text-center align-items-center bg-secondary p-5 text-white">
+                    <!-- s text -->
+                    <div class="col-md-6">
+                        <h2>Séria <?= $season->getCislo() ?></h2>
+                        <p><?= $season->getPopis() ?></p>
+                        <!-- s button biely -->
+                        <p>
+                            <button class="btn btn-outline-light" type="button" data-toggle="collapse"
+                                    data-target="<?php echo $odkaz1 ?>" aria-expanded="false"
+                                    aria-controls="<?php echo $odkaz ?>">
+                                Pozri trailer
+                            </button>
+                        </p>
+                    </div>
+                    <!-- s obrazok -->
+                    <div class="col-md-6">
+                        <img src="<?= $season->getImgLink() ?>" alt="img" class="rounded mx-auto d-block img-fluid">
+                    </div>
+                    <!-- s video collapse -->
+                    <div class="col-md-12">
+                        <div class="collapse" id="<?php echo $odkaz ?>">
+                            <div class="embed-responsive embed-responsive-16by9 mt-2">
+                                <iframe class="embed-responsive-item" src="<?= $season->getVideoLink() ?>"
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-
-        <?php }
-            } ?>
+                <?php
+                }
+                } ?>
 
 
 

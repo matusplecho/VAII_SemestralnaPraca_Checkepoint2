@@ -23,16 +23,35 @@ if (isset($_POST['submit'])){
 $idUprav = -1;
 if (isset($_POST['uprav'])){
 
+    //if( !empty($_POST['meno']) && !empty($_POST['sezona']) && !empty($_POST['text']) ){
+       // if((is_int($_POST['sezona'])) && ($_POST['sezona'] > 0) && ($_POST['sezona'] < 32)){
+
+            foreach ($seasons as $season)  {
+                if((strcasecmp ($season->getNazov(), $_POST['meno'])==0) && ($season->getCislo() == $_POST['sezona'])){
+                    $idUprav = $season->getId();
+                }
+            }
+            if($idUprav != (-1)) {
+                $storage->editSeasonPopis($idUprav, $_POST['text']);
+
+            }
+       // }
+    //}
+
+
+
+
+
+/*
     foreach ($seasons as $season)  {
         if((strcasecmp ($season->getNazov(), $_POST['meno'])==0) && ($season->getCislo() == $_POST['sezona'])){
             $idUprav = $season->getId();
         }
     }
-
     if($idUprav != (-1)) {
         $storage->editSeasonPopis($idUprav, $_POST['text']);
 
-    }
+    }*/
 }
 
 ?>
