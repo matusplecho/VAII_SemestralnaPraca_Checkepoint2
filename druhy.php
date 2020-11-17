@@ -3,6 +3,7 @@ require "DBStorage.php";
 $storage = new DBStorage();
 
 $seasons = $storage->getAll();
+$seasonsID = $storage->getIdAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">

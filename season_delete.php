@@ -2,13 +2,25 @@
 require "DBStorage.php";
 $storage = new DBStorage();
 
-/*if (isset($_POST['nazov'], $_POST['cislo'], $_POST['video_link'], $_POST['img_link'], $_POST['popis'])){*/
+$seasons = $storage->getIdAll();
+
+$idDelete = -1;
 if (isset($_POST['submit'])){
-    $season = new Season($_POST['nazov'], $_POST['cislo'], $_POST['video_link'], $_POST['img_link'], $_POST['popis']);
-    $storage->saveSeason($season);
+/*
+    foreach ($seasons as $season)  {
+
+        if((strcasecmp ((String)$season->getNazov(), (String)$_POST['nazov'])==0) && ($season->getCislo() == $_POST['cislo'])){
+            $idDelete = $season->getId();
+        }
+    }
+
+    if($idDelete != (-1)) {
+        $storage->deleteSeason($idDelete);
+    }
+    */
+    $storage->deleteSeason($_POST['cislo']);
 }
 
-$seasons = $storage->getAll();
 
 ?>
 <!DOCTYPE html>
@@ -77,7 +89,7 @@ $seasons = $storage->getAll();
     <div class="container">
         <div class="row text-center ">
             <div class="col-sm-12 text-info p-2 font-weight-bold text-center">
-                <h1>Pridajte seriu</h1>
+                <h1>Vymaz seriu</h1>
             </div>
             <div class="col-md-12 mb-4 text-left bg-secondary align-items-center p-3">
 
@@ -97,37 +109,8 @@ $seasons = $storage->getAll();
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Video</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="video_link" class="form-control" id="formGroupExampleInput" placeholder="Link na video">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Obrazok</label>
-                        <div class="col-sm-10">
-                            <input type="text" name="img_link" class="form-control" id="formGroupExampleInput" placeholder="Link na obrazok">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="exampleFormControlTextarea1" class="col-sm-2 text-light font-weight-bold col-form-label">Popis</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" name="popis" id="exampleFormControlTextarea1" rows="5" placeholder="Popis série"></textarea>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">index</label>
-                        <div class="col-sm-10">
-                            <input type="number" name="vymaz" class="form-control" id="formGroupExampleInput" placeholder="index">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
                         <div class="col-sm-12 text-center">
-                            <input type="submit" name="submit" value="Pridaj" class="btn font-weight-bold btn-light">
+                            <input type="submit" name="submit" value="Odstran" class="btn font-weight-bold btn-light">
                         </div>
                     </div>
 

@@ -1,8 +1,9 @@
 <?php
 
 
-class Season
+class SeasonID
 {
+    private $id;
     public $cislo;
     public $popis;
     public $video_link;
@@ -10,20 +11,38 @@ class Season
     public $nazov;
 
     /**
-     * Season constructor.
+     * SeasonID constructor.
+     * @param $id
      * @param $cislo
      * @param $popis
      * @param $video_link
      * @param $img_link
      * @param $nazov
      */
-    public function __construct($nazov, $cislo, $video_link, $img_link, $popis)
+    public function __construct($id, $cislo, $popis, $video_link, $img_link, $nazov)
     {
+        $this->id = $id;
         $this->cislo = $cislo;
         $this->popis = $popis;
         $this->video_link = $video_link;
         $this->img_link = $img_link;
         $this->nazov = $nazov;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
     /**
@@ -67,9 +86,8 @@ class Season
     }
 
     /**
-     * @return mixed
+     * @param mixed $video_link
      */
-
     public function setVideoLink($video_link): void
     {
         $this->video_link = $video_link;
@@ -106,7 +124,6 @@ class Season
     {
         $this->nazov = $nazov;
     }
-
 
 
 }
