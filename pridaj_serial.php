@@ -4,8 +4,9 @@ $storage = new DBStorage();
 
 $seasons = $storage->getIdAll();
 
+//kontrolovanie a spracovanie vlozenia novej serie
 if (isset($_POST['submit'])  && !empty($_POST['nazov']) && !empty($_POST['cislo']) && !empty($_POST['video_link']) && !empty($_POST['img_link']) && !empty($_POST['popis'])){
-    if((is_int($_POST['cislo'])) && ($_POST['cislo'] > 0) && ($_POST['cislo'] < 33)) {
+    if(($_POST['cislo'] > 0) && ($_POST['cislo'] < 33)) {
 
         $idVloz = -1;
 
@@ -33,7 +34,6 @@ if (isset($_POST['submit'])  && !empty($_POST['nazov']) && !empty($_POST['cislo'
         echo '<script>alert("Musíte vyplniť všetky políčka formuláru!")</script>';
     }
 }
-
 
 $seasons = $storage->getAll();
 ?>

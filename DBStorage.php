@@ -23,7 +23,7 @@ class DBStorage
         ]);
     }
 
-
+    //do array ulozi vsetky prvky databazy bez id
     public function getAll(): array
     {
         $stmt = $this->pdo->query("SELECT * FROM sezona");
@@ -35,6 +35,7 @@ class DBStorage
         return $seasons;
     }
 
+    //do array ulozi vsetky prvky databazy s id
     public function getIdAll(): array
     {
         $stmt = $this->pdo->query("SELECT * FROM sezona");
@@ -46,21 +47,31 @@ class DBStorage
         return $seasons;
     }
 
+    //ulozi do databazy objekt season
     public function saveSeason(Season $season): void
     {
         $stmt = $this->pdo->prepare("INSERT INTO sezona (nazov, cislo, video_link, img_link, popis) VALUES(?, ?, ?, ?, ?)");
         $stmt->execute([$season->getNazov(), $season->getCislo(), $season->getVideoLink(), $season->getImgLink(), $season->getPopis()]);
     }
 
+    //odstrani prvok databazy z databazy podla zadaneho id
     public function deleteSeason(int $id): void
     {
         $stmt = $this->pdo->prepare("DELETE FROM sezona WHERE id = '$id' ");
         $stmt->execute();
     }
 
+    //uprav popis prvoku databazy z databazy podla zadaneho id a textu
     public function editSeasonPopis(int $id, $text): void
     {
         $stmt = $this->pdo->prepare("UPDATE sezona SET popis='$text' WHERE id='$id'");
+        $stmt->execute();
+    }
+
+    //uprav link pre obrazok prvoku databazy z databazy podla zadaneho id a linku
+    public function editSeasonImgLink(int $id, $link): void
+    {
+        $stmt = $this->pdo->prepare("UPDATE sezona SET img_link='$link' WHERE id='$id'");
         $stmt->execute();
     }
 }
