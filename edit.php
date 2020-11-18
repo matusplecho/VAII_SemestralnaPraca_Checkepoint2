@@ -91,10 +91,10 @@ if (isset($_POST['uprav'])  && !empty($_POST['meno']) && !empty($_POST['sezona']
                     <a class="nav-link" href="treti.php">Zoznam</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pridaj_serial.php">Pridanie seriálu</a>
+                    <a class="nav-link" href="pridaj_serial.php">Pridanie série</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="edit.php">Úprava seriálu</a>
+                    <a class="nav-link" href="edit.php">Úprava série</a>
                 </li>
             </ul>
             <!-- search -->
