@@ -2,14 +2,40 @@
 require "DBStorage.php";
 $storage = new DBStorage();
 
-/*if (isset($_POST['nazov'], $_POST['cislo'], $_POST['video_link'], $_POST['img_link'], $_POST['popis'])){*/
-if (isset($_POST['submit'])){
-    $season = new Season($_POST['nazov'], $_POST['cislo'], $_POST['video_link'], $_POST['img_link'], $_POST['popis']);
-    $storage->saveSeason($season);
+$seasons = $storage->getIdAll();
+
+if (isset($_POST['submit'])  && !empty($_POST['nazov']) && !empty($_POST['cislo']) && !empty($_POST['video_link']) && !empty($_POST['img_link']) && !empty($_POST['popis'])){
+    if((is_int($_POST['cislo'])) && ($_POST['cislo'] > 0) && ($_POST['cislo'] < 33)) {
+
+        $idVloz = -1;
+
+        foreach ($seasons as $season) {
+            if ((strcasecmp($season->getNazov(), $_POST['nazov']) == 0) && ($season->getCislo() == $_POST['cislo'])) {
+                $idVloz = $season->getId();
+            }
+        }
+
+        if ($idVloz == (-1)) {
+            $season = new Season($_POST['nazov'], $_POST['cislo'], $_POST['video_link'], $_POST['img_link'], $_POST['popis']);
+            $storage->saveSeason($season);
+        } else {
+            if (isset($_POST['submit'])) {
+                echo '<script>alert("Séria s hodnotami v poliach Názov a Číslo, ktoré ste zadal/a sa už nachádza v našej databáze!")</script>';
+            }
+        }
+    }else{
+        if (isset($_POST['submit'])) {
+            echo '<script>alert("Číslo série sa musí nachádzať v intervale od 1 po 32!")</script>';
+        }
+    }
+}else{
+    if (isset($_POST['submit'])) {
+        echo '<script>alert("Musíte vyplniť všetky políčka formuláru!")</script>';
+    }
 }
 
-$seasons = $storage->getAll();
 
+$seasons = $storage->getAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,36 +96,36 @@ $seasons = $storage->getAll();
     <div class="container">
         <div class="row text-center ">
             <div class="col-sm-12 text-info p-2 font-weight-bold text-center">
-                <h1>Pridajte seriu</h1>
+                <h1>Pridajte sériu</h1>
             </div>
             <div class="col-md-12 mb-4 text-left bg-secondary align-items-center p-3">
 
                 <form method="post">
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 text-light font-weight-bold col-form-label">Nazov</label>
+                        <label for="inputEmail3" class="col-sm-2 text-light font-weight-bold col-form-label">Názov</label>
                         <div class="col-sm-10">
-                            <input type="text" name="nazov" class="form-control" id="formGroupExampleInput" placeholder="Nazov serialu">
+                            <input type="text" name="nazov" class="form-control" id="formGroupExampleInput" placeholder="Názov seriálu">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Cislo</label>
+                        <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Číslo</label>
                         <div class="col-sm-10">
-                            <input type="number" name="cislo" class="form-control" id="formGroupExampleInput" placeholder="Cislo série">
+                            <input type="number" name="cislo" class="form-control" id="formGroupExampleInput" placeholder="Číslo série 1 - 32">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Video</label>
                         <div class="col-sm-10">
-                            <input type="text" name="video_link" class="form-control" id="formGroupExampleInput" placeholder="Link na video">
+                            <input type="text" name="video_link" class="form-control" id="formGroupExampleInput" placeholder="Link pre video">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Obrazok</label>
+                        <label for="inputPassword3" class="col-sm-2 text-light font-weight-bold col-form-label">Obrázok</label>
                         <div class="col-sm-10">
-                            <input type="text" name="img_link" class="form-control" id="formGroupExampleInput" placeholder="Link na obrazok">
+                            <input type="text" name="img_link" class="form-control" id="formGroupExampleInput" placeholder="Link pre obrázok">
                         </div>
                     </div>
 
